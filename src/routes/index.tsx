@@ -1,25 +1,21 @@
 import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
+import { ElectoralWardSearch } from "./uk-wards/uk-electoral-ward-search";
 
 export default component$(() => {
   return (
     <>
-      <h1>Hi 👋</h1>
-      <p>
-        Can't wait to see what you build with qwik!
-        <br />
-        Happy coding.
-      </p>
+      <ElectoralWardSearch />
     </>
   );
 });
 
 export const head: DocumentHead = {
-  title: "Welcome to Qwik",
+  title: "Electoral Ward Search",
   meta: [
     {
       name: "description",
-      content: "Qwik site description",
+      content: "carbon-components-qwik Showcase",
     },
   ],
 };
