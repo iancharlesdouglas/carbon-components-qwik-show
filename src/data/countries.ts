@@ -1,4 +1,4 @@
-import { Country } from './country';
+import { Country } from '../model/country';
 
 /**
  * Countries of the UK

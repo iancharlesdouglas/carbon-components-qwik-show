@@ -1,4 +1,4 @@
-import type { Region } from './region';
+import type { Region } from '../model/region';
 
 /**
  * Regions of the UK
