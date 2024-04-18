@@ -27,8 +27,8 @@ devDependencies:
     specifier: ^7.7.0
     version: 7.7.0(eslint@8.57.0)(typescript@5.3.3)
   carbon-components-qwik:
-    specifier: ^0.0.10
-    version: 0.0.10
+    specifier: ^0.0.13
+    version: 0.0.13
   carbon-icons-qwik:
     specifier: ^11.26.0
     version: 11.26.0
@@ -1255,8 +1255,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /carbon-components-qwik@0.0.10:
-    resolution: {integrity: sha512-C8KihE5EcFf/FRV/xc1XI0UtnFeYyqYHndC2jbgLA/KEfKmDTzSj3xHtF2kzmJH6qW9VnznaGPJD4V4fAILypg==}
+  /carbon-components-qwik@0.0.13:
+    resolution: {integrity: sha512-t/m0YtTb2gzpYU2Sb7nK11aK4ra69QDPFV+a9F4GDu7fQXJqpsed3HUDHMPCe1Xd4Crap9rp2zaaqlSc+yYk7w==}
     engines: {node: '>=15.0.0'}
     dev: true
 
