@@ -15,8 +15,8 @@ devDependencies:
     specifier: ^1.55.0
     version: 1.55.0(sass@1.75.0)
   '@types/eslint':
-    specifier: ^8.56.9
-    version: 8.56.9
+    specifier: ^8.56.10
+    version: 8.56.10
   '@types/node':
     specifier: ^20.12.7
     version: 20.12.7
@@ -27,8 +27,8 @@ devDependencies:
     specifier: ^7.7.0
     version: 7.7.0(eslint@8.57.0)(typescript@5.3.3)
   carbon-components-qwik:
-    specifier: ^0.0.13
-    version: 0.0.13
+    specifier: ^0.0.16
+    version: 0.0.16
   carbon-icons-qwik:
     specifier: ^11.26.0
     version: 11.26.0
@@ -40,7 +40,7 @@ devDependencies:
     version: 48.2.3(eslint@8.57.0)
   eslint-plugin-prettier:
     specifier: ^5.1.3
-    version: 5.1.3(@types/eslint@8.56.9)(eslint@8.57.0)(prettier@3.2.5)
+    version: 5.1.3(@types/eslint@8.56.10)(eslint@8.57.0)(prettier@3.2.5)
   eslint-plugin-qwik:
     specifier: ^1.5.2
     version: 1.5.2(eslint@8.57.0)
@@ -85,7 +85,7 @@ packages:
       vfile: 6.0.1
       vite: 5.2.9(@types/node@20.12.7)(sass@1.75.0)
       vite-imagetools: 6.2.9
-      zod: 3.22.4
+      zod: 3.22.5
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -889,8 +889,8 @@ packages:
       '@types/ms': 0.7.34
     dev: true
 
-  /@types/eslint@8.56.9:
-    resolution: {integrity: sha512-W4W3KcqzjJ0sHg2vAq9vfml6OhsJ53TcUjUqfzzZf/EChUtwspszj/S0pzMxnfRcO55/iGq47dscXw71Fxc4Zg==}
+  /@types/eslint@8.56.10:
+    resolution: {integrity: sha512-Shavhk87gCtY2fhXDctcfS3e6FdxWkCx1iUZ9eEUbh7rTqlZT0/IzOkCOVt0fCjcFuZ9FPYfuezTBImfHCDBGQ==}
     dependencies:
       '@types/estree': 1.0.5
       '@types/json-schema': 7.0.15
@@ -1255,8 +1255,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /carbon-components-qwik@0.0.13:
-    resolution: {integrity: sha512-t/m0YtTb2gzpYU2Sb7nK11aK4ra69QDPFV+a9F4GDu7fQXJqpsed3HUDHMPCe1Xd4Crap9rp2zaaqlSc+yYk7w==}
+  /carbon-components-qwik@0.0.16:
+    resolution: {integrity: sha512-pGr3S2e9ciIOPvhF+wdnTGCXNqHWPga7xDwR1IraMdgkiUYggKCxYG7IW8ax5/UjPSgvnb6G7+vu8hLGTP3m/g==}
     engines: {node: '>=15.0.0'}
     dev: true
 
@@ -1687,7 +1687,7 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-plugin-prettier@5.1.3(@types/eslint@8.56.9)(eslint@8.57.0)(prettier@3.2.5):
+  /eslint-plugin-prettier@5.1.3(@types/eslint@8.56.10)(eslint@8.57.0)(prettier@3.2.5):
     resolution: {integrity: sha512-C9GCVAs4Eq7ZC/XFQHITLiHJxQngdtraXaM+LoUFoFp/lHNl2Zn8f3WQbe9HvTBBQ9YnKFB0/2Ajdqwo5D1EAw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -1701,7 +1701,7 @@ packages:
       eslint-config-prettier:
         optional: true
     dependencies:
-      '@types/eslint': 8.56.9
+      '@types/eslint': 8.56.10
       eslint: 8.57.0
       prettier: 3.2.5
       prettier-linter-helpers: 1.0.0
@@ -3708,8 +3708,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /zod@3.22.4:
-    resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
+  /zod@3.22.5:
+    resolution: {integrity: sha512-HqnGsCdVZ2xc0qWPLdO25WnseXThh0kEYKIdV5F/hTHO75hNZFp8thxSeHhiPrHZKrFTo1SOgkAj9po5bexZlw==}
     dev: true
 
   /zwitch@2.0.4:

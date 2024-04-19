@@ -1,0 +1,15 @@
+h2 {
+  margin-top: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.vert {
+  display: flex; 
+  flex-direction: column; 
+  &.center {
+    justify-content: center;
+  }
+  &.bottom {
+    justify-content: flex-end;
+  }
+}

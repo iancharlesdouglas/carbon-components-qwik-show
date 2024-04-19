@@ -1,7 +1,8 @@
-import { component$, useSignal, useStore, useTask$ } from '@builder.io/qwik';
+import { component$, useSignal, useStore, useStyles$, useTask$ } from '@builder.io/qwik';
 import {
   Button,
   CarbonRoot,
+  Checkbox,
   Column,
   Dropdown,
   Form,
@@ -22,11 +23,13 @@ import { LocalAuthority } from '~/model/local-authority';
 import { localAuthorities } from '~/data/local-authorities';
 import { Search } from 'carbon-icons-qwik';
 import { columns } from '~/model/columns';
+import style from './wards.scss?inline';
 
 /**
  * Tool to search for UK electoral wards
  */
 export const ElectoralWardSearch = component$(() => {
+  useStyles$(style);
   const countryOptions: ViewCountry[] = countries
     .map(country => ({ ...country, label: country.name }))
     .sort(sortByName);
@@ -65,11 +68,17 @@ export const ElectoralWardSearch = component$(() => {
   return (
     <CarbonRoot>
       <Section>
-        <Heading text="UK Electoral Ward Search" />
+        <Grid>
+          <Column lg={16} md={8} sm={4}>
+            <Heading text="Electoral Ward Search" />
+          </Column>
+        </Grid>
         <Form>
           <Section>
-            <Heading text="Search by Local Authority" />
             <Grid>
+              <Column lg={16} md={8} sm={4}>
+                <Heading text="Search by Local Authority" />
+              </Column>
               <Column lg={3} md={2} sm={1}>
                 <Dropdown
                   label="Country"
@@ -101,8 +110,33 @@ export const ElectoralWardSearch = component$(() => {
                   size="sm"
                 />
               </Column>
-              <Column lg={2} md={1} sm={1}>
-                <div style="display: flex; flex-direction: row; justify-content: center; margin-top: 1rem">
+              <Column lg={2} md={1} sm={1} class="vert bottom" style="margin-left: 1rem">
+                <Button
+                  size="sm"
+                  type="button"
+                  renderIcon={Search}
+                  onClick$={async () => {
+                    const response = await fetch('/api/ward');
+                    const json = await response.json();
+                  }}
+                >
+                  Search
+                </Button>
+              </Column>
+            </Grid>
+            <Grid>
+              <Column lg={16} md={8} sm={4}>
+                <Heading text="Search by Name" />
+              </Column>
+              <Column lg={4} md={2} sm={1}>
+                <TextInput labelText="Ward name" helperText="Case-sensitive" renderSize="sm" />
+              </Column>
+              <Column lg={3} md={2} sm={1} class="vert center">
+                <div style="display:flex; flex-direction: row">
+                  <Checkbox
+                    labelText="Starts with"
+                    onChange$={(event: Event) => console.log('event received - starts with', event)}
+                  />
                   <Button
                     size="sm"
                     type="button"
@@ -116,18 +150,13 @@ export const ElectoralWardSearch = component$(() => {
                   </Button>
                 </div>
               </Column>
-            </Grid>
-            <Heading text="Search by Name" />
-            <Grid>
-              <Column lg={3} md={2} sm={1}>
-                <TextInput labelText="Ward name" renderSize="sm" />
-              </Column>
-              <Column lg={4} md={3} sm={2}>
+              <Column lg={3} md={2} sm={2}>
                 <MultiSelect
                   label="Columns"
+                  title="Select columns"
                   items={columnOptions}
                   selectedItems={selectedColumns.value}
-                  onChange$={(userSelection: Item[], item: Item) => {
+                  onChange$={(userSelection: Item[], item?: Item) => {
                     selectedColumns.value = userSelection;
                     if (
                       (item === wardCodeColumn || item === wardNameColumn) &&
