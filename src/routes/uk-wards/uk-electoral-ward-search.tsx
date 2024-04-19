@@ -11,9 +11,9 @@ import {
   Item,
   Labelled,
   MultiSelect,
-  Row,
   Section,
   TextInput,
+  TextInputChangeEvent,
 } from 'carbon-components-qwik';
 import { countries } from '~/data/countries';
 import { Country } from '~/model/country';
@@ -21,7 +21,7 @@ import { Region } from '~/model/region';
 import { regions } from '~/data/regions';
 import { LocalAuthority } from '~/model/local-authority';
 import { localAuthorities } from '~/data/local-authorities';
-import { Search } from 'carbon-icons-qwik';
+import { Reset, Search } from 'carbon-icons-qwik';
 import { columns } from '~/model/columns';
 import style from './wards.scss?inline';
 
@@ -44,6 +44,8 @@ export const ElectoralWardSearch = component$(() => {
     .sort(sortByName);
   const selectionObj: Selection = { country: undefined, region: undefined, localAuthority: undefined };
   const selection = useStore(selectionObj);
+  const textSearchObj: TextSearch = { wardName: undefined, startsWith: false };
+  const textSearch = useStore(textSearchObj);
   const filteredRegions = useSignal<ViewRegion[]>();
   const filteredLocalAuthorities = useSignal<ViewLocalAuthority[]>();
   useTask$(({ track }) => {
@@ -86,6 +88,7 @@ export const ElectoralWardSearch = component$(() => {
                   selectedItem={selection.country}
                   onSelect$={(item: Item) => {
                     selection.country = item as ViewCountry;
+                    selection.localAuthority = undefined;
                   }}
                   size="sm"
                 />
@@ -107,21 +110,41 @@ export const ElectoralWardSearch = component$(() => {
                   label="Local authority"
                   items={filteredLocalAuthorities.value}
                   selectedItem={selection.localAuthority}
+                  onSelect$={(item: Item) => {
+                    selection.localAuthority = item as ViewLocalAuthority;
+                  }}
                   size="sm"
                 />
               </Column>
-              <Column lg={2} md={1} sm={1} class="vert bottom" style="margin-left: 1rem">
-                <Button
-                  size="sm"
-                  type="button"
-                  renderIcon={Search}
-                  onClick$={async () => {
-                    const response = await fetch('/api/ward');
-                    const json = await response.json();
-                  }}
-                >
-                  Search
-                </Button>
+              <Column lg={4} md={1} sm={1} class="vert bottom" style="margin-left: 1rem">
+                <div>
+                  <Button
+                    size="sm"
+                    type="button"
+                    renderIcon={Search}
+                    onClick$={async () => {
+                      const response = await fetch('/api/ward');
+                      const json = await response.json();
+                    }}
+                    disabled={!(selection.country && selection.region && selection.localAuthority)}
+                  >
+                    Search
+                  </Button>
+                  <Button
+                    size="sm"
+                    type="button"
+                    renderIcon={Reset}
+                    hasIconOnly={true}
+                    onClick$={() => {
+                      selection.country = undefined;
+                      selection.region = undefined;
+                      selection.localAuthority = undefined;
+                    }}
+                    disabled={!selection.country && !selection.region && !selection.localAuthority}
+                    style="margin-left: 1rem"
+                    title="Reset country, region and local authority"
+                  ></Button>
+                </div>
               </Column>
             </Grid>
             <Grid>
@@ -129,13 +152,26 @@ export const ElectoralWardSearch = component$(() => {
                 <Heading text="Search by Name" />
               </Column>
               <Column lg={4} md={2} sm={1}>
-                <TextInput labelText="Ward name" helperText="Case-sensitive" renderSize="sm" />
+                <TextInput
+                  labelText="Ward name"
+                  value={textSearch.wardName ?? ''}
+                  onChange$={(event: TextInputChangeEvent) => {
+                    textSearch.wardName = event.value.trim();
+                  }}
+                  helperText="Case-sensitive"
+                  renderSize="sm"
+                />
               </Column>
-              <Column lg={3} md={2} sm={1} class="vert center">
-                <div style="display:flex; flex-direction: row">
+              <Column lg={5} md={2} sm={1} class="vert center">
+                <div style="display:flex; flex-direction: row; justify-content: flex-start">
                   <Checkbox
                     labelText="Starts with"
-                    onChange$={(event: Event) => console.log('event received - starts with', event)}
+                    checked={textSearch.startsWith}
+                    onChange$={(event: Event) => {
+                      const checkbox = event.target as HTMLInputElement;
+                      textSearch.startsWith = checkbox.checked;
+                    }}
+                    class="no-fill"
                   />
                   <Button
                     size="sm"
@@ -145,12 +181,26 @@ export const ElectoralWardSearch = component$(() => {
                       const response = await fetch('/api/ward');
                       const json = await response.json();
                     }}
+                    disabled={!textSearch.wardName}
                   >
                     Search
                   </Button>
+                  <Button
+                    size="sm"
+                    type="button"
+                    renderIcon={Reset}
+                    hasIconOnly={true}
+                    onClick$={() => {
+                      textSearch.wardName = undefined;
+                      textSearch.startsWith = false;
+                    }}
+                    disabled={!textSearch.wardName}
+                    style="margin-left: 1rem"
+                    title="Reset ward name"
+                  ></Button>
                 </div>
               </Column>
-              <Column lg={3} md={2} sm={2}>
+              <Column lg={4} md={2} sm={2} style="padding-right: 2rem">
                 <MultiSelect
                   label="Columns"
                   title="Select columns"
@@ -180,6 +230,11 @@ type Selection = {
   country?: ViewCountry;
   region?: ViewRegion;
   localAuthority?: ViewLocalAuthority;
+};
+
+type TextSearch = {
+  wardName?: string;
+  startsWith: boolean;
 };
 
 type ViewCountry = Country & Labelled;
