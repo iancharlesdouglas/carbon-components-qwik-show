@@ -1,0 +1,27 @@
+h3 {
+  margin: 1.5rem 0 0.75rem 0;
+}
+
+th {
+  font-weight: 500;
+  font-size: 0.925rem;
+}
+
+th, td {
+  border: 1px solid var(--cds-border-strong);
+  padding: 0.25rem 0.7rem 0.25rem 0.5rem;
+  text-align: left;
+  color: var(--cds-text-primary);
+}
+
+td {
+  font-size: 0.9rem;
+}
+
+tr:nth-child(even), th {
+  background-color: var(--cds-field);
+}
+
+table {
+  margin-bottom: 1rem;
+}
