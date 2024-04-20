@@ -1,9 +1,13 @@
-@use '@carbon/styles';
+@use '@carbon/styles' with (
+  $fonts: (
+    IBM-Plex-Serif: false,
+    IBM-Plex-Mono: false
+  )
+);
 
 * {
   --cds-heading-06-font-size: 1.5rem;
   --cds-heading-05-font-size: 1.15rem;
   --cds-heading-04-font-size: 1.15rem;
-  font-family: sans-serif;
 }
 

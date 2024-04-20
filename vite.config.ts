@@ -7,6 +7,7 @@ import { qwikVite } from "@builder.io/qwik/optimizer";
 import { qwikCity } from "@builder.io/qwik-city/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import pkg from "./package.json";
+import path from "path";
 
 const { dependencies = {}, devDependencies = {} } = pkg as any as {
   dependencies: Record<string, string>;
@@ -51,6 +52,11 @@ export default defineConfig(({ command, mode }): UserConfig => {
         // Do cache the server response in preview (non-adapter production build)
         "Cache-Control": "public, max-age=600",
       },
-    },
+    }, 
+    resolve: {
+      alias: {
+        '~@ibm': `${path.resolve(__dirname, './public')}`
+      }
+    }
   };
 });
