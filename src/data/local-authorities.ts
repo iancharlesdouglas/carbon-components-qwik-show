@@ -1,3 +1,4 @@
+/* eslint-disable spellcheck/spell-checker */
 import { LocalAuthority } from '~/model/local-authority';
 
 export const localAuthorities: LocalAuthority[] = [

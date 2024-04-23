@@ -20,14 +20,14 @@ export const WardsList = component$((props: WardsListProps) => {
               <table>
                 <thead>
                   {selectedColsMetadata.map(([, name]) => (
-                    <th>{name}</th>
+                    <th key={name}>{name}</th>
                   ))}
                 </thead>
                 <tbody>
                   {wards?.map(ward => (
-                    <tr>
+                    <tr key={ward[0]}>
                       {selectedColsMetadata.map(([key]) => (
-                        <td>{ward[key]}</td>
+                        <td key={ward[key]}>{ward[key]}</td>
                       ))}
                     </tr>
                   ))}

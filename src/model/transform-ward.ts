@@ -1,3 +1,4 @@
+/* eslint-disable spellcheck/spell-checker */
 import { Ward } from './ward';
 import { WardDto } from './ward-dto';
 

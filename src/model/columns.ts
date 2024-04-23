@@ -1,3 +1,4 @@
+/* eslint-disable spellcheck/spell-checker */
 /**
  * Ward columns mapped to English names
  */

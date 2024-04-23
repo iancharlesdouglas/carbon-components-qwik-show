@@ -1,8 +1,5 @@
 @use '@carbon/styles' with (
-  $fonts: (
-    IBM-Plex-Serif: false,
-    IBM-Plex-Mono: false
-  )
+  $css--font-face: false,
 );
 
 * {

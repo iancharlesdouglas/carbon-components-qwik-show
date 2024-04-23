@@ -73,6 +73,7 @@ export const ElectoralWardSearch = component$(() => {
   const selectedColumns = useSignal(
     columnOptions.filter(column => column !== countryCodeColumn && column !== regionCodeColumn),
   );
+  const selectedLocalAuthorityCode = selection.localAuthority?.code;
   const wards = useSignal<any[]>();
   const themes: Item[] = ['white', 'g10', 'g90', 'g100'];
   const theme = useSignal<ThemeCode>('white');
@@ -148,7 +149,7 @@ export const ElectoralWardSearch = component$(() => {
                       renderIcon={Search}
                       onClick$={async () => {
                         const response = await fetch(
-                          `/api/ward?localAuthority=${encodeURIComponent(selection.localAuthority?.code!)}`,
+                          `/api/ward?localAuthority=${encodeURIComponent(selectedLocalAuthorityCode!)}`,
                         );
                         const json = await response.json();
                         wards.value = json.results;

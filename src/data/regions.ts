@@ -6,6 +6,7 @@ import type { Region } from '../model/region';
 export const regions: Region[] = [
   {
     code: 'E12000003',
+    // eslint-disable-next-line spellcheck/spell-checker
     name: 'Yorkshire and The Humber',
     country: 'E92000001',
     countryName: 'England',
