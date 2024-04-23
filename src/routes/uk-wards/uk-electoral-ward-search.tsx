@@ -71,7 +71,9 @@ export const ElectoralWardSearch = component$(() => {
   const countryCodeColumn = 'Country Code';
   const regionCodeColumn = 'Region Code';
   const selectedColumns = useSignal(
-    columnOptions.filter(column => column !== countryCodeColumn && column !== regionCodeColumn),
+    columnOptions.filter(
+      column => column !== countryCodeColumn && column !== regionCodeColumn && column !== 'Ward Type',
+    ),
   );
   const selectedLocalAuthorityCode = selection.localAuthority?.code;
   const wards = useSignal<any[]>();

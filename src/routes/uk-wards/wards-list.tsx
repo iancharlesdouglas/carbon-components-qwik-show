@@ -17,10 +17,12 @@ export const WardsList = component$((props: WardsListProps) => {
           {wardsFound && (
             <>
               <Heading text="Wards" />
-              <table>
+              <table class="cds--data-table cds--data-table--sm">
                 <thead>
                   {selectedColsMetadata.map(([, name]) => (
-                    <th key={name}>{name}</th>
+                    <th scope="col" key={name}>
+                      <div class="cds--table-header-label">{name}</div>
+                    </th>
                   ))}
                 </thead>
                 <tbody>
