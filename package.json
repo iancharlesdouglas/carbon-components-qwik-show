@@ -1,11 +1,12 @@
 {
-  "name": "my-qwik-empty-starter",
-  "description": "App with Routing built-in ready to create your app",
+  "name": "carbon-components-qwik-show",
+  "version": "0.0.1",
+  "description": "Demo site for carbon-components-qwik component library",
   "engines": {
     "node": "^18.17.0 || ^20.3.0 || >=21.0.0"
   },
   "engines-annotation": "Mostly required by sharp which needs a Node-API v9 compatible runtime",
-  "private": true,
+  "private": false,
   "trustedDependencies": [
     "sharp"
   ],
@@ -15,8 +16,10 @@
     "build": "qwik build",
     "build.client": "vite build",
     "build.preview": "vite build --ssr src/entry.preview.tsx",
+    "build.server": "vite build -c adapters/netlify-edge/vite.config.ts",
     "build.types": "tsc --incremental --noEmit",
-    "deploy": "echo 'Run \"npm run qwik add\" to install a server adapter'",
+    "deploy": "netlify deploy --build",
+    "deploy.prod": "netlify deploy --build --prod",
     "dev": "vite --mode ssr",
     "dev.debug": "node --inspect-brk ./node_modules/vite/bin/vite.js --mode ssr --force",
     "fmt": "prettier --write .",
@@ -30,6 +33,7 @@
     "@builder.io/qwik": "^1.5.2",
     "@builder.io/qwik-city": "^1.5.2",
     "@carbon/styles": "^1.55.0",
+    "@netlify/edge-functions": "^2.0.0",
     "@types/eslint": "^8.56.10",
     "@types/node": "^20.12.7",
     "@typescript-eslint/eslint-plugin": "^7.7.0",
@@ -41,6 +45,7 @@
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-qwik": "^1.5.2",
     "eslint-plugin-spellcheck": "^0.0.20",
+    "netlify-cli": "^15.0.0",
     "prettier": "^3.2.5",
     "sass": "^1.75.0",
     "typescript": "5.3.3",
