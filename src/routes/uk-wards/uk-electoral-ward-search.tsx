@@ -155,6 +155,7 @@ export const ElectoralWardSearch = component$(() => {
                         );
                         const json = await response.json();
                         wards.value = json.results;
+                        console.log('got wards', json.results.length);
                       }}
                       disabled={!(selection.country && selection.region && selection.localAuthority)}
                     >
@@ -192,7 +193,7 @@ export const ElectoralWardSearch = component$(() => {
                     renderSize="sm"
                   />
                 </Column>
-                <Column lg={5} md={4} sm={3} class="vert center">
+                <Column lg={5} md={6} sm={4} class="vert center">
                   <div style="display:flex; flex-direction: row; justify-content: flex-start">
                     <Checkbox
                       labelText="Starts with"
