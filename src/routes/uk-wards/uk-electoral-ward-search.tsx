@@ -108,7 +108,7 @@ export const ElectoralWardSearch = component$(() => {
                 <Column lg={16} md={8} sm={4}>
                   <Heading text="Search by Local Authority" />
                 </Column>
-                <Column lg={3} md={2} sm={1}>
+                <Column lg={3} md={3} sm={2}>
                   <Dropdown
                     label="Country"
                     items={countryOptions}
@@ -120,7 +120,7 @@ export const ElectoralWardSearch = component$(() => {
                     size="sm"
                   />
                 </Column>
-                <Column lg={4} md={2} sm={1}>
+                <Column lg={4} md={3} sm={2}>
                   <Dropdown
                     label="Region"
                     items={filteredRegions.value}
@@ -132,7 +132,7 @@ export const ElectoralWardSearch = component$(() => {
                     size="sm"
                   />
                 </Column>
-                <Column lg={4} md={2} sm={1}>
+                <Column lg={4} md={3} sm={2}>
                   <Dropdown
                     label="Local authority"
                     items={filteredLocalAuthorities.value}
@@ -143,7 +143,7 @@ export const ElectoralWardSearch = component$(() => {
                     size="sm"
                   />
                 </Column>
-                <Column lg={4} md={1} sm={1} class="vert bottom" style="margin-left: 1rem">
+                <Column lg={4} md={3} sm={2} class="vert bottom" style="margin-left: 1rem">
                   <div>
                     <Button
                       size="sm"
@@ -181,7 +181,7 @@ export const ElectoralWardSearch = component$(() => {
                 <Column lg={16} md={8} sm={4}>
                   <Heading text="Search by Name" />
                 </Column>
-                <Column lg={4} md={2} sm={1}>
+                <Column lg={4} md={2} sm={2}>
                   <TextInput
                     labelText="Ward name"
                     value={textSearch.wardName ?? ''}
@@ -192,7 +192,7 @@ export const ElectoralWardSearch = component$(() => {
                     renderSize="sm"
                   />
                 </Column>
-                <Column lg={5} md={2} sm={1} class="vert center">
+                <Column lg={5} md={4} sm={3} class="vert center">
                   <div style="display:flex; flex-direction: row; justify-content: flex-start">
                     <Checkbox
                       labelText="Starts with"
@@ -233,7 +233,7 @@ export const ElectoralWardSearch = component$(() => {
                     ></Button>
                   </div>
                 </Column>
-                <Column lg={4} md={2} sm={2} style="padding-right: 2rem">
+                <Column lg={4} md={4} sm={4} style="padding-right: 2rem">
                   <MultiSelect
                     label="Columns"
                     title="Select columns"
